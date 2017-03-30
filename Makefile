@@ -35,7 +35,8 @@ CXXFLAGS_CPU         ?= -mfma -mavx2 # -mavx is minimum
 CXXFLAGS             := -m$(TARGET_SIZE) -std=c++11 -Wall -Wextra -Werror -DCUDA_FFM_VERSION=\"$(CUDA_FFM_VERSION)\" $(CXXFLAGS_CPU)
 
 NVCC_CCFLAGS  := -m$(TARGET_SIZE) -std=c++11
-GENCODE_FLAGS ?= -gencode arch=compute_52,code=compute_52
+#GENCODE_FLAGS ?= -gencode arch=compute_52,code=compute_52
+GENCODE_FLAGS ?= -gencode arch=compute_50,code=sm_50 -gencode arch=compute_60,code=sm_60
 INCLUDES      := -isystem $(CUB_PATH) -I./java/src/main/resources/com/rtbhouse/model/natives
 
 ifeq ($(dbg),1)

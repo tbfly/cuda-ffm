@@ -47,7 +47,7 @@ diff <(sort tmp/shuffled.txt) <(sort tmp/testing.txt tmp/training.txt)
 # test learning
 
 export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
-export LD_LIBRARY_PATH=/usr/local/cuda-7.5/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 stdbuf -o0 ./bin/trainer --testingDatasetPath   tmp/testing.bin         \
               --trainingDatasetPath  tmp/training.bin                   \
