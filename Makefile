@@ -20,7 +20,7 @@ EXECUTABLES      := $(CUDA_EXECUTABLES) $(CXX_EXECUTABLES)
 TRAINER_OBJS     := src/ffm_trainer.o src/ffm_predictor.o src/model.o src/cuda_utils.o
 NODEPS := clean
 
-CUDA_PATH     ?= /usr/local/cuda-7.5
+CUDA_PATH     ?= /usr/local/cuda
 CUB_PATH      := ./cub-1.5.2
 
 HOST_ARCH     := $(shell uname -m)
@@ -29,7 +29,7 @@ TARGET_SIZE   := 64
 TARGET_OS     ?= $(HOST_OS)
 
 HOST_COMPILER        ?= g++ # nvcc does not work with gcc-6
-DECENT_HOST_COMPILER ?= g++-6 # gcc-4.8+ is OK, but gcc-6 produces faster code
+DECENT_HOST_COMPILER ?= g++ # gcc-4.8+ is OK, but gcc-6 produces faster code
 NVCC                 := $(CUDA_PATH)/bin/nvcc -ccbin $(HOST_COMPILER)
 CXXFLAGS_CPU         ?= -mfma -mavx2 # -mavx is minimum
 CXXFLAGS             := -m$(TARGET_SIZE) -std=c++11 -Wall -Wextra -Werror -DCUDA_FFM_VERSION=\"$(CUDA_FFM_VERSION)\" $(CXXFLAGS_CPU)
